@@ -9,3 +9,6 @@ event.php
 eventJSON.php
 get-events.php
 inClassEvent.php
+dbConnect.php
+parkingLot.php
+

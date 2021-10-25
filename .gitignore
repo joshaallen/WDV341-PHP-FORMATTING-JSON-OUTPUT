@@ -5,7 +5,7 @@ connection.php
 deliverProduct.php
 display-events-ajax.html
 displayProductObject.html
-event.php
+events.php
 eventJSON.php
 get-events.php
 inClassEvent.php

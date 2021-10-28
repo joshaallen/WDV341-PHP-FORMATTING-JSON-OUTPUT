@@ -4,7 +4,8 @@
 require_once('connection.php');
 require_once('event.php');
 
-//PHP object assigned to an instance of the connection class
+try {
+  //PHP object assigned to an instance of the connection class
 $connection = new Connection();
 //open connection 
 $conn = $connection->open();
@@ -14,6 +15,7 @@ $sql = "SELECT name,description,presenter, date,time FROM wdv341_events  WHERE p
 $statement_obj = $conn->prepare($sql);
 //database executes the statement
 $statement_obj->execute();
+
 //returns an array indexed by column name as returned in your result set
 $results = $statement_obj->fetch(PDO::FETCH_ASSOC); 
 //close connection
@@ -33,6 +35,11 @@ $phpEventsArray = [];
 array_push($phpEventsArray, $phpOutputObj);
 //encode Associative Array into JSON Object
 $jsonOutputObj = json_encode($phpEventsArray);
+
+}//Catching error with Super Global PDOException
+catch(PDOException $e) {
+      echo "Error message is : " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
